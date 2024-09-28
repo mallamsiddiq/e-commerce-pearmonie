@@ -45,6 +45,63 @@ Users can register through the authentication endpoint, access, view, and manage
 
 All utility functions that call external APIs are cached to prevent frequent external API hits, which also helps to manage API rate limits.
 
+Here's your setup instructions with corrected syntax and grammar:
+
+---
+
+### Setup Instructions
+
+You can easily set up the service locally using Docker and Docker Compose. I added a `make.bat` file for Windows users and a `Makefile` for Unix-like environments.
+
+Simply hit:
+
+- `make start` 
+
+to spin up the two services, and 
+
+- `make down` 
+
+to pull down the containers.
+
+Use `make test-all` to run unit tests.
+
+You can also set it up manually:
+
+1. Navigate to the `main-web` directory:
+   ```bash
+   cd main-web
+   ```
+2. Start the Docker containers:
+   ```bash
+   docker compose up -d --build
+   ```
+3. Navigate back to the root directory:
+   ```bash
+   cd ..
+   ```
+   And boom! You have the services up: 
+   - Main web on port 5050 
+   - AI API on port 5001
+
+4. Next, navigate to the `recommendation-ai` directory:
+   ```bash
+   cd recommendation-ai
+   ```
+5. Start the Docker containers for the AI API:
+   ```bash
+   docker compose up -d --build
+   ```
+6. Navigate back to the `main-web` directory:
+   ```bash
+   cd ..
+   ```
+
+To run tests with coverage, use:
+```bash
+docker compose exec api coverage manage.py test
+```
+
+
 ### Authentication
 
 All API requests require authentication. Users must obtain a token via an authentication process and include it in the headers of their requests:
