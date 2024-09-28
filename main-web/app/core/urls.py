@@ -4,9 +4,9 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, Spec
 
 url_version = "api/v1"
 urlpatterns = [
-    path(f"{url_version}/schema/", SpectacularAPIView.as_view(), name='schema'),
-    path(f"{url_version}/doc/", SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
-    path(f"{url_version}/redoc/", SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+    path(f"schema/", SpectacularAPIView.as_view(), name='schema'),
+    path(f"", SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path(f"redoc/", SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
     path('admin/', admin.site.urls),
     path('__debug__/', include('debug_toolbar.urls')),
     path(f"{url_version}/", include('authapp.urls')),

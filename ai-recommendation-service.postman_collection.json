@@ -1,0 +1,296 @@
+{
+	"info": {
+		"_postman_id": "303a4975-b5bc-46ca-b903-18e47cd43202",
+		"name": "ai-recommendation-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18756450",
+		"_collection_link": "https://leftyteam.postman.co/workspace/pearmoney~015cbc4e-4f9c-4098-a804-5e2068c3bbcf/collection/18756450-303a4975-b5bc-46ca-b903-18e47cd43202?action=share&source=collection_link&creator=18756450"
+	},
+	"item": [
+		{
+			"name": "register interactions",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Client-Header-Secret",
+						"value": "PEARMONIEAPI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"category\": \"juio electronics\",\r\n    \"created_at\": \"Mon, 23 Sep 2024 21:43:50 GMT\",\r\n    \"product_id\": \"abcd1234-abcd-1234-abcd-1234abcd1234\",\r\n    \"user_id\": \"12345678-1234-1234-1234-123456789abc\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5001/ai/interactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"ai",
+						"interactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list all interactions",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Client-Header-Secret",
+						"value": "PEARMONIEAPI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"category\": \"juio electronics\",\r\n    \"created_at\": \"Mon, 23 Sep 2024 21:43:50 GMT\",\r\n    \"product_id\": \"abcd1234-abcd-1234-abcd-1234abcd1234\",\r\n    \"user_id\": \"12345678-1234-1234-1234-123456789abc\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5001/ai/interactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"ai",
+						"interactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list all products",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Client-Header-Secret",
+						"value": "PEARMONIEAPI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"category\": \"juio electronics\",\r\n    \"created_at\": \"Mon, 23 Sep 2024 21:43:50 GMT\",\r\n    \"product_id\": \"abcd1234-abcd-1234-abcd-1234abcd1234\",\r\n    \"user_id\": \"12345678-1234-1234-1234-123456789abc\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5001/ai/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"ai",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "category based recomendations",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Client-Header-Secret",
+						"value": "PEARMONIEAPI",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"category\": \"juio electronics\",\r\n    \"created_at\": \"Mon, 23 Sep 2024 21:43:50 GMT\",\r\n    \"product_id\": \"abcd1234-abcd-1234-abcd-1234abcd1234\",\r\n    \"user_id\": \"12345678-1234-1234-1234-123456789abc\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5001/ai/category-recommendations?category=electronics&product_id=abcd1234-abcd-1234-abcd-1234abcd1234",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"ai",
+						"category-recommendations"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "electronics"
+						},
+						{
+							"key": "product_id",
+							"value": "abcd1234-abcd-1234-abcd-1234abcd1234"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "list all products Copy",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Client-Header-Secret",
+								"value": "PEARMONIEAPI",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"category\": \"juio electronics\",\r\n    \"created_at\": \"Mon, 23 Sep 2024 21:43:50 GMT\",\r\n    \"product_id\": \"abcd1234-abcd-1234-abcd-1234abcd1234\",\r\n    \"user_id\": \"12345678-1234-1234-1234-123456789abc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/ai/category-recommendations?category=electronics&product_id=abcd1234-abcd-1234-abcd-1234abcd1234",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"ai",
+								"category-recommendations"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "electronics"
+								},
+								{
+									"key": "product_id",
+									"value": "abcd1234-abcd-1234-abcd-1234abcd1234"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.4 Python/3.9.20"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 28 Sep 2024 20:56:53 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1704"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"_id\": {\n            \"$oid\": \"66f58c088b275ef23a79522f\"\n        },\n        \"product_id\": \"719a01f1-96c4-49df-8ef2-93228bb8559f\",\n        \"product_name\": \"New product\",\n        \"category\": \"Another  Cat\",\n        \"created_at\": {\n            \"$date\": \"2024-09-26T16:30:00.371Z\"\n        }\n    },\n    {\n        \"_id\": {\n            \"$oid\": \"66f58cdc06202eee8f06fec3\"\n        },\n        \"product_id\": \"f85b3ead-23ad-474a-994e-cbfb67dc5c47\",\n        \"product_name\": \"New product\",\n        \"category\": \"Another  Cat\",\n        \"created_at\": {\n            \"$date\": \"2024-09-26T16:33:32.262Z\"\n        }\n    },\n    {\n        \"_id\": {\n            \"$oid\": \"66f58d3f06202eee8f06fec4\"\n        },\n        \"product_id\": \"f47d1cbe-6f2c-416f-9689-87213aed3919\",\n        \"product_name\": \"New product\",\n        \"category\": \"Another  Cat\",\n        \"created_at\": {\n            \"$date\": \"2024-09-26T16:35:11.971Z\"\n        }\n    },\n    {\n        \"_id\": {\n            \"$oid\": \"66f58fa42c5b0e65205bcd80\"\n        },\n        \"product_id\": \"b866f145-d1fa-4e73-9cdd-5e973116e313\",\n        \"product_name\": \"New product\",\n        \"category\": \"Another  Cat\",\n        \"created_at\": {\n            \"$date\": \"2024-09-26T16:45:24.299Z\"\n        }\n    },\n    {\n        \"_id\": {\n            \"$oid\": \"66f58ff02c5b0e65205bcd81\"\n        },\n        \"product_id\": \"3b08dee8-3e55-4ae2-8918-77b5749fce8d\",\n        \"product_name\": \"New product\",\n        \"category\": \"Another  Cat\",\n        \"created_at\": {\n            \"$date\": \"2024-09-26T16:46:40.119Z\"\n        }\n    },\n    {\n        \"_id\": {\n            \"$oid\": \"66f58ffc2c5b0e65205bcd82\"\n        },\n        \"product_id\": \"daa76db7-08cc-49ec-a407-2e73ee43e283\",\n        \"product_name\": \"New product\",\n        \"category\": \"Another  Cat\",\n        \"created_at\": {\n            \"$date\": \"2024-09-26T16:46:52.841Z\"\n        }\n    },\n    {\n        \"_id\": {\n            \"$oid\": \"66f59277044a8eeffae26e03\"\n        },\n        \"product_id\": \"6f025781-b5a6-40f4-9abb-26fc745260e5\",\n        \"product_name\": \"New product\",\n        \"category\": \"Another  Cat\",\n        \"created_at\": {\n            \"$date\": \"2024-09-26T16:57:27.020Z\"\n        }\n    },\n    {\n        \"_id\": {\n            \"$oid\": \"66f59286044a8eeffae26e04\"\n        },\n        \"product_id\": \"166453dd-e534-470a-a809-c5b7ef67d6fc\",\n        \"product_name\": \"New product\",\n        \"category\": \"Another  Cat\",\n        \"created_at\": {\n            \"$date\": \"2024-09-26T16:57:42.284Z\"\n        }\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "interaction based recomendations Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Client-Header-Secret",
+						"value": "PEARMONIEAPI",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"category\": \"juio electronics\",\r\n    \"created_at\": \"Mon, 23 Sep 2024 21:43:50 GMT\",\r\n    \"product_id\": \"abcd1234-abcd-1234-abcd-1234abcd1234\",\r\n    \"user_id\": \"12345678-1234-1234-1234-123456789abc\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5001/ai/interaction-recommendations?category=electronics&product_id=719a01f1-96c4-49df-8ef2-93228bb8559f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"ai",
+						"interaction-recommendations"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "electronics"
+						},
+						{
+							"key": "product_id",
+							"value": "719a01f1-96c4-49df-8ef2-93228bb8559f"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

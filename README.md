@@ -15,7 +15,7 @@ This API allows users to manage stores and products within those stores. Users c
 
 The Flask AI Recommendation Service provides personalized product recommendations for an eCommerce platform. It leverages machine learning models to analyze user interactions and product categories, thereby enhancing user experience through tailored suggestions. This service is designed to receive asynchronous updates from the eCommerce service, allowing it to maintain up-to-date data for accurate recommendations.
 
-the main service is hosted on port `8000` 
+the main service is hosted on port `5050` 
 while the recommendatio api is hosted on port `5001`
 
 ### Tech Stack
@@ -45,9 +45,18 @@ Users can register through the authentication endpoint, access, view, and manage
 
 All utility functions that call external APIs are cached to prevent frequent external API hits, which also helps to manage API rate limits.
 
-Here's your setup instructions with corrected syntax and grammar:
+I had created unit test cases that covers all edge cases in the main ecommerce service
 
----
+
+### Documentation
+
+There is auto-generated documentation for the main service available at:
+
+- [http://localhost:5050/](http://localhost:5050/)
+- [http://localhost:5050/redoc/](http://localhost:5050/redoc/)
+
+There are also a `ai-recommendation-service.postman_collection.json` and `Main E-commerce API service.postman_collection.json` files in the root folder that contains the Postman API collection. Happy experimenting!
+
 
 ### Setup Instructions
 
@@ -577,3 +586,21 @@ The Flask AI Recommendation Service is designed endpoints to listen for updates 
 ### Conclusion
 
 The Flask AI Recommendation Service provides a robust framework for delivering personalized product recommendations in an eCommerce context. With its integration of machine learning models, periodic training, and support for asynchronous updates from the eCommerce service, this system offers a dynamic and efficient way to enhance user experience. Use the provided API endpoints to utilize the recommendation capabilities effectively.
+
+
+### Limitations
+
+Due to time constraints, I could not write tests for the AI service, as it was actually considered optional.
+
+For ease of experimenting, all environment variables are made public in the repository.
+
+**Note/Disclaimer:**  
+This setup is aimed for local testing. For production considerations, kindly reach out for security and performance advice.
+
+
+This work is open to feedback, comments, and recommendations. Feel free to reach out; I’ll be happy to connect!
+
+
+© 2024 Akinyemi Sodiq.
+
+
