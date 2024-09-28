@@ -24,7 +24,7 @@ while the recommendatio api is hosted on port `5001`
 - python, Django, Django REST Framework, PostgreSQL, Redis [cache and broker], celery,  Docker, Docker Compose
 
 #### Ai Recommendation Service
-- python Flask, scikit learn, kmeans, knn, Mongodb, Redis [broker], celery beat, Docker
+- python Flask, scikit learn, kmeans, knn, Mongodb, Redis [ broker], celery beat, Docker
 
 
 ### Authentication

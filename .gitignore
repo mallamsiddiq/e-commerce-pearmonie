@@ -13,7 +13,7 @@ access_token.txt
 # !**/migrations
 # !**/migrations/__init__.py
 **/migrations/00*
-**/ai-model/*
+**/ai-models/*
 
 # C extensions
 *.so
