@@ -2,15 +2,14 @@
 ## E  commerce microservie api
 
 
-## Store and Product API Documentation
+## Main Web :Authentication Store and Product API
 
 ### Overview
 
 This API allows users to manage stores and products within those stores. Users can create, update, retrieve, and delete stores and products. Additionally, it includes features for viewing the most popular products and tracking product views.
 
 
-
-## Flask AI Recommendation Service Documentation
+## Flask AI Recommendation Service
 
 ### Overview
 
@@ -26,6 +25,25 @@ while the recommendatio api is hosted on port `5001`
 #### Ai Recommendation Service
 - python Flask, scikit learn, kmeans, knn, Mongodb, Redis [ broker], celery beat, Docker
 
+
+#### Third-Party Integration
+
+I integrated [https://api.freecurrencyapi.com](https://api.freecurrencyapi.com) for the latest conversion rates.
+
+#### Application Flow: Thought Process 
+
+Since the requirements specifically ask for logout functionality and we are using JWT, I implemented a custom middleware that logs users' tokens in the Redis cache to prevent further access. Redis cache is used for storing blacklisted tokens to avoid hitting the main database at every request. Further consideration may involve partitioning Redis for better performance. There is also an endpoint for blacklisting refresh tokens.
+
+There is a table for users, products, and stores in the main app. Products are attached to stores, and stores are attached to users (owners). Since there was no clear understanding of the relationships, every non-admin user is considered a vendor and gets a store by default so they can easily go ahead and create their first product. There is also an endpoint to create another store if the vendor wants and add products to it. 
+
+**Role:**
+- Users cannot manage another user's items (store, profiles, products); they cannot add products to a store they don't own, while admins can manage all resources.
+
+The AI recommendation is built on Flask for lightweight consideration since only a few endpoints are required. It is integrated with MongoDB for faster data access for model training and product recommendation. Since the whole structure here is flat, it is mainly expected to be internal to the main API, so its endpoints, especially those that require mutations, need a client header secret. I have added this in the environment so the services can communicate with each other. If you use the Postman YAML doc I provided, it contains this header secret so you can experiment with it.
+
+Users can register through the authentication endpoint, access, view, and manage their profiles. Admins can also register and manage all users as requested via their IDs. Please note that users don't need IDs to manage their personal profiles; the auth token is enough to fetch profile details.
+
+All utility functions that call external APIs are cached to prevent frequent external API hits, which also helps to manage API rate limits.
 
 ### Authentication
 
