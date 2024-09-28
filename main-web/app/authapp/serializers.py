@@ -41,24 +41,9 @@ class AdminRegistrationSerializer(serializers.ModelSerializer):
         Check that the email domain is 'pearmonie.com'.
         """
         if not value.endswith('@pearmonie.com'):
-            raise serializers.ValidationError(_(" Invalid domain grant .."))
+            raise serializers.ValidationError(_(" Invalid domain grant .. only  @pearmonie.com)"))
         return value
         
     def create(self, validated_data):
         user = get_user_model().objects.create_superuser(**validated_data)
         return user
-
-
-class AdminLoginSerializer(TokenObtainPairSerializer):
-    def validate(self, attrs):
-        data = super().validate(attrs)
-        
-        # Check if the user is an admin (you can customize this logic later)
-        # this is to be user created through data syncronization dont have access
-        if not self.user.is_staff:  # Or replace with your custom check
-            raise AuthenticationFailed(
-                "You are not authorized to login in here", 
-                code=status.HTTP_403_FORBIDDEN
-            )
-        
-        return data

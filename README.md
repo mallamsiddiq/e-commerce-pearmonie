@@ -41,7 +41,7 @@ There is a table for users, products, and stores in the main app. Products are a
 
 The AI recommendation is built on Flask for lightweight consideration since only a few endpoints are required. It is integrated with MongoDB for faster data access for model training and product recommendation. Since the whole structure here is flat, it is mainly expected to be internal to the main API, so its endpoints, especially those that require mutations, need a client header secret. I have added this in the environment so the services can communicate with each other. If you use the Postman YAML doc I provided, it contains this header secret so you can experiment with it.
 
-Users can register through the authentication endpoint, access, view, and manage their profiles. Admins can also register and manage all users as requested via their IDs. Please note that users don't need IDs to manage their personal profiles; the auth token is enough to fetch profile details.
+Users can register through the authentication endpoint, access, view, and manage their profiles. Admins can also register and manage all users as requested via their IDs . Please note that users don't need IDs to manage their personal profiles; the auth token is enough to fetch profile details. Just to differentiate admin  signup from vendors', `@pearmonie.com ` doamin email is required to sighn up as admin
 
 All utility functions that call external APIs are cached to prevent frequent external API hits, which also helps to manage API rate limits.
 
@@ -121,6 +121,27 @@ Authorization: Token <your_token_here>
 ```
 
 ### API Endpoints
+
+
+### 0.0 Endpoints Using Authentication and Profile
+
+#### 0.1 Profile Management:
+- **GET** `/api/v1/users/me/`: Get current user profile details.
+- **GET** `/api/v1/users/:id/`: Get public user details.
+- **PATCH** `/api/v1/users/update-me/`: Update user profile. Requires a valid (non-blacklisted) JWT token.
+
+#### 0.2 Admin Operations:
+- **PATCH** `/api/v1/users/:id/`: Admin manage user profile. Requires a valid (non-blacklisted) JWT token.
+- **DELETE** `/api/v1/users/:id/`: Admin delete user profile. Requires a valid (non-blacklisted) JWT token.
+  
+#### 0.3 Admin Registration:
+- **POST** `/api/v1/auth/admin-signup/`: Register a new admin. Only emails with a specific domain (e.g., `@pearmonie.com`) can register here.
+
+#### Token Operations:
+- **POST** `/api/v1/auth/login/`: Log out the user and blacklist the token.
+- **POST** `/api/v1/auth/logout/`: Log out the user and blacklist the token.
+- **POST** `/api/v1/auth/refresh-blacklist/`: Blacklist the token during refresh.
+
 
 #### 1. Store Endpoints
 
