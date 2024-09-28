@@ -19,11 +19,11 @@ the main service is hosted on port `5050`
 while the recommendatio api is hosted on port `5001`
 
 ### Tech Stack
-#### E-commerce Service
+#### Main E-commerce Service
 - python, Django, Django REST Framework, PostgreSQL, Redis [cache and broker], celery,  Docker, Docker Compose
 
 #### Ai Recommendation Service
-- python Flask, scikit learn, kmeans, knn, Mongodb, Redis [ broker], celery beat, Docker
+- python Flask, scikit learn, Kmeans, KNN, Mongodb, Redis [ broker], celery beat, Docker Compose
 
 
 #### Third-Party Integration
