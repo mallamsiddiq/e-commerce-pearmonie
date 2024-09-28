@@ -18,7 +18,9 @@ The Flask AI Recommendation Service provides personalized product recommendation
 the main service is hosted on port `5050` 
 while the recommendatio api is hosted on port `5001`
 
+
 ### Tech Stack
+
 #### Main E-commerce Service
 - python, Django, Django REST Framework, PostgreSQL, Redis [cache and broker], celery,  Docker, Docker Compose
 
