@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  web: &api
+    build:
+      context: ./
+      dockerfile: ./docker/Dockerfile
+    command: flask run --host=0.0.0.0
+    volumes:
+      - .:/app
+    ports:
+      - "5001:5000"
+    env_file:
+      - ./.env
+    depends_on:
+      - mongo
+    networks:
+      - commerce-network
+
+  mongo:
+    image: mongo:4.4
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - commerce-network
+
+  celery:
+    <<: *api
+    command: celery -A app.worker.celery worker --loglevel=info
+    volumes:
+      - .:/app
+    env_file:
+      - ./.env
+    ports: []
+    depends_on:
+      - web
+    networks:
+      - commerce-network
+
+  celery-beat:
+    <<: *api
+    command: celery -A app.worker.celery beat --loglevel=info
+    volumes:
+      - .:/app
+    env_file:
+      - ./.env
+    ports: []
+    depends_on:
+      - web
+
+volumes:
+  mongo_data:
+
+networks:
+  commerce-network:
+    external: true
+    # driver: bridge
+    name: commerce-network

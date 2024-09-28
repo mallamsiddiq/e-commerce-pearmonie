@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  
+  db:
+    image: postgres:14.1-alpine
+    env_file:
+      - ./.env
+    ports:
+      - '${DB_PORT}:5432'
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: '${DB_USER}'
+      POSTGRES_PASSWORD: '${DB_PASSWORD}'
+      POSTGRES_DB: 'users_db'
+    volumes:
+      - commerce-db:/var/lib/postgresql/data
+    networks:
+      - commerce-network
+
+  redis:
+    image: "redis:alpine"
+    restart: always
+    ports:
+      - "6380:6379"
+    networks:
+      - commerce-network
+
+  api: &api
+    build:
+      context: ./
+      dockerfile: ./docker/Dockerfile
+    env_file:
+      - ./.env
+    ports:
+      - '${BACKEND_PORT}:8000'
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./app:/app
+    restart: always
+    depends_on:
+      - db
+      - redis
+    networks:
+      - commerce-network
+
+  celery:
+    <<: *api
+    command: celery -A core worker --loglevel=info --logfile=logs/celery.log
+    volumes:
+      - ./app:/app
+    env_file:
+      - ./.env
+    ports: []
+    depends_on:
+      - redis
+      - api
+
+volumes:
+  commerce-db:
+
+networks:
+  commerce-network:
+    # external: true
+    driver: bridge
+    name: commerce-network
