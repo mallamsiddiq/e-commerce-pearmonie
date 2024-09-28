@@ -16,7 +16,16 @@ This API allows users to manage stores and products within those stores. Users c
 
 The Flask AI Recommendation Service provides personalized product recommendations for an eCommerce platform. It leverages machine learning models to analyze user interactions and product categories, thereby enhancing user experience through tailored suggestions. This service is designed to receive asynchronous updates from the eCommerce service, allowing it to maintain up-to-date data for accurate recommendations.
 
-the main service is hosted on port 8000 while the recommendatio api is hosted on port 5001 
+the main service is hosted on port `8000` 
+while the recommendatio api is hosted on port `5001`
+
+Tech Stack
+E-commerce Service
+Backend: python, Django, Django REST Framework, PostgreSQL, Redis [cache and broker], celery,  Docker, Docker Compose
+Ai Recommendation Service
+Backend: python Flask, scikit learn, kmeans, knn, Mongodb, Redis [cache broker], celery beat, Docker
+
+
 ### Authentication
 
 All API requests require authentication. Users must obtain a token via an authentication process and include it in the headers of their requests:
