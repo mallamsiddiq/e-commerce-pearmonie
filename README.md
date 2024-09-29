@@ -57,7 +57,7 @@ There is auto-generated documentation for the main service available at:
 - [http://localhost:5050/](http://localhost:5050/)
 - [http://localhost:5050/redoc/](http://localhost:5050/redoc/)
 
-There are also a `ai-recommendation-service.postman_collection.json` and `Main E-commerce API service.postman_collection.json` files in the root folder that contains the Postman API collection. Happy experimenting!
+There are also `ai-recommendation-service.postman_collection.json` and `Main E-commerce API service.postman_collection.json` files in the root folder that contains the Postman API collection. Happy experimenting!
 
 
 ### Setup Instructions
@@ -140,7 +140,7 @@ Authorization: Token <your_token_here>
 - **POST** `/api/v1/auth/admin-signup/`: Register a new admin. Only emails with a specific domain (e.g., `@pearmonie.com`) can register here.
 
 #### Token Operations:
-- **POST** `/api/v1/auth/login/`: Log out the user and blacklist the token.
+- **POST** `/api/v1/auth/login/`: generates access token for access protected routes.
 - **POST** `/api/v1/auth/logout/`: Log out the user and blacklist the token.
 - **POST** `/api/v1/auth/refresh-blacklist/`: Blacklist the token during refresh.
 
